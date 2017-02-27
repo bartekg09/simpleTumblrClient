@@ -5,4 +5,5 @@ package pl.bgortych.simpletumblrclient.model;
  */
 
 public class SinglePost {
+
 }
