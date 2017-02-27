@@ -10,12 +10,12 @@ import android.support.v4.app.FragmentActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.bgortych.simpletumblrclient.model.SinglePost;
+import pl.bgortych.simpletumblrclient.model.Post;
 import pl.bgortych.simpletumblrclient.searcher.UserSearchFragment;
 
 public class MainActivity extends FragmentActivity implements UserSearchFragment.OnFragmentInteractionListener{
 
-    private List<SinglePost> tumblrPostList;
+    private List<Post> tumblrPostList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MainActivity extends FragmentActivity implements UserSearchFragment
 
         if(isConnected()){
             TumblrHttpClient client = new TumblrHttpClient();
-            client.requestPostData("Dany", 0, 0);
+            client.requestPostData("user", 0, 0);
         }
 
         tumblrPostList = new ArrayList<>();

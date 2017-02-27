@@ -7,6 +7,8 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import pl.bgortych.simpletumblrclient.utils.httpClientUtils;
+
 import static org.junit.Assert.*;
 
 /**
@@ -15,12 +17,17 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class HttpClientUtilsTest {
     @Test
-    public void useAppContext() throws Exception {
+    public void urlMakingPositiveWayTest() throws Exception {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
-
-        assertEquals("pl.bgortych.simpletumblrclient", appContext.getPackageName());
+        assertEquals("http://user.tumblr.com/api/read/json", httpClientUtils.makeTumblrUrl("user"));
+    }
+    @Test
+    public void urlNullTest() throws Exception {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        assertEquals(null, httpClientUtils.makeTumblrUrl(null));
     }
 }
