@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,17 +32,11 @@ public class PostListFragment extends Fragment {
 
     ListView postListView;
     View view;
+    View progressBarView;
 
     public PostListFragment() {
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment PostListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static PostListFragment newInstance() {
         PostListFragment fragment = new PostListFragment();
         Bundle args = new Bundle();
@@ -59,6 +54,7 @@ public class PostListFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_post_list, container, false);
         postListView = (ListView) view.findViewById(R.id.posts_list_view);
+        progressBarView = view.findViewById(R.id.progress_bar);
         return view;
     }
 
@@ -97,4 +93,13 @@ public class PostListFragment extends Fragment {
         // TODO: Update argument type and name
         void postListOnFragmentInteraction(Uri uri);
     }
+
+    public void showInProgressLaout(boolean doShow){
+        if(doShow){
+            progressBarView.setVisibility(View.VISIBLE);
+        } else {
+            progressBarView.setVisibility(View.GONE);
+        }
+    }
+
 }

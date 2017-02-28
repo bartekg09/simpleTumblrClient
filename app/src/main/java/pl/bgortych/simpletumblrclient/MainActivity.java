@@ -26,6 +26,8 @@ public class MainActivity extends FragmentActivity implements TumblrHttpClientTa
     UserSearchFragment userSearchFragment;
     PostListFragment postListFragment;
 
+    boolean isInProgress = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +44,6 @@ public class MainActivity extends FragmentActivity implements TumblrHttpClientTa
 
         fragmentTransaction.commit();
 
-//        if (httpClientUtils.isConnected(this)) {
-//            String url = httpClientUtils.makeTumblrUrl("user");
-//            TumblrHttpClientTask task = new TumblrHttpClientTask(this);
-//            task.execute(url);
-//        }
-
         tumblrPostList = new ArrayList<>();
     }
 
@@ -55,10 +51,12 @@ public class MainActivity extends FragmentActivity implements TumblrHttpClientTa
     public void onLoaded(TumblrResponse response) {
         this.tumblrPostList = new ArrayList<>(Arrays.asList(response.getPosts()));
         postListFragment.bindData(tumblrPostList);
+        setInProgress(false);
     }
 
     @Override
     public void onError() {
+        setInProgress(false);
         Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.no_user_found), Toast.LENGTH_LONG);
         toast.show();
     }
@@ -74,6 +72,7 @@ public class MainActivity extends FragmentActivity implements TumblrHttpClientTa
     }
 
     public void goOnclick(View view) {
+        setInProgress(true);
         String userName = userSearchFragment.getUserNameEditText().getText().toString();
         tumblrPostList = new ArrayList<>();
         postListFragment.bindData(tumblrPostList);
@@ -85,5 +84,10 @@ public class MainActivity extends FragmentActivity implements TumblrHttpClientTa
             Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.connection_failure), Toast.LENGTH_LONG);
             toast.show();
         }
+    }
+
+    private void setInProgress(boolean isInProgress) {
+        this.isInProgress = isInProgress;
+        postListFragment.showInProgressLaout(isInProgress);
     }
 }

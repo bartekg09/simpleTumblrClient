@@ -8,6 +8,17 @@
         android:id="@+id/posts_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/post_list_item"></ListView>
+        tools:listitem="@layout/post_list_item"/>
+
+    <RelativeLayout
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
 
 </FrameLayout>

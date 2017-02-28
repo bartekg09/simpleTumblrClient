@@ -28,6 +28,7 @@ public class PostListAdapter extends ArrayAdapter<Post> {
 
     private static class ViewHolder{
         TextView postTitle;
+        TextView quoteText;
     }
 
     public PostListAdapter(ArrayList<Post> postArrayList, Context context) {
@@ -49,6 +50,7 @@ public class PostListAdapter extends ArrayAdapter<Post> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.post_list_item, parent, false);
             viewHolder.postTitle = (TextView) convertView.findViewById(R.id.post_title_text_view);
+            viewHolder.quoteText = (TextView) convertView.findViewById(R.id.post_quote_text);
 
             result=convertView;
 
@@ -58,7 +60,26 @@ public class PostListAdapter extends ArrayAdapter<Post> {
             result=convertView;
         }
 
-        viewHolder.postTitle.setText(post.getType() + post.getDate());
+        viewHolder.postTitle.setText(post.getDate());
+
+        //ToDo switch to ENUM!
+        switch (post.getType()){
+            case "quote":
+                //Todo HTML value interpretation
+                viewHolder.quoteText.setVisibility(View.VISIBLE);
+                viewHolder.quoteText.setText(post.getQuoteText());
+                break;
+            case "photo":
+                break;
+            case "video":
+                break;
+            case "link":
+                break;
+            case "regular":
+                break;
+            default:
+                break;
+        }
 
         return result;
     }
