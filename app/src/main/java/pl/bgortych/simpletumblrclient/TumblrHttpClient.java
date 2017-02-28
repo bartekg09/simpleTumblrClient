@@ -3,11 +3,15 @@ package pl.bgortych.simpletumblrclient;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.StringReader;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,10 +30,10 @@ public class TumblrHttpClient {
         httpAsyncTask.execute(url);
     }
 
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+    private class HttpAsyncTask extends AsyncTask<String, Void, TumblrResponse> {
 
         @Override
-        protected String doInBackground(String... params) {
+        protected TumblrResponse doInBackground(String... params) {
             try {
                 String url = params[0];
                 RestTemplate restTemplate = new RestTemplate();
@@ -39,7 +43,13 @@ public class TumblrHttpClient {
                 converter.setSupportedMediaTypes(allowedMediaTypes);
                 restTemplate.getMessageConverters().add(converter);
                 String response = restTemplate.getForObject(url, String.class);
-                return response;
+                if (response.startsWith("var tumblr_api_read = "))
+                    response = response.substring("var tumblr_api_read = ".length());
+                Gson gson = new Gson();
+                JsonReader reader = new JsonReader(new StringReader(response));
+                reader.setLenient(true);
+                TumblrResponse tumblrResponse = gson.fromJson(reader, TumblrResponse.class);
+                return tumblrResponse;
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }
@@ -49,7 +59,7 @@ public class TumblrHttpClient {
 
 
         @Override
-        protected void onPostExecute(String tumblrResponse) {
+        protected void onPostExecute(TumblrResponse tumblrResponse) {
             //bindPostsToList(this.tumblrPostList, tumblrResponse);
 
             //ToDo fetch view()
