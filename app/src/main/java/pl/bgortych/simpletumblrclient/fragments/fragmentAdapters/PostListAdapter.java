@@ -1,18 +1,13 @@
 package pl.bgortych.simpletumblrclient.fragments.fragmentAdapters;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 import pl.bgortych.simpletumblrclient.R;
 import pl.bgortych.simpletumblrclient.model.Post;
@@ -62,7 +57,8 @@ public class PostListAdapter extends ArrayAdapter<Post> {
 
         viewHolder.postTitle.setText(post.getDate());
 
-        //ToDo switch to ENUM!
+        //ToDo switch to ENUM!.
+        //ToDo support for all post types
         switch (post.getType()){
             case "quote":
                 //Todo HTML value interpretation
