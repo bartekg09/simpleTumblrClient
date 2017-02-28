@@ -1,5 +1,9 @@
 package pl.bgortych.simpletumblrclient.utils;
 
+import android.app.Activity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 /**
  * Created by bartl on 2017-02-27.
  */
@@ -13,5 +17,14 @@ public class httpClientUtils {
         } else {
             return null;
         }
+    }
+
+    public static boolean isConnected(Activity activity){
+        ConnectivityManager connMgr = (ConnectivityManager) activity.getSystemService(Activity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected())
+            return true;
+        else
+            return false;
     }
 }

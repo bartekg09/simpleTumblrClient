@@ -79,46 +79,382 @@ public class Post {
 
     String[] tags;
 
+    @SerializedName("quote-text")
+    String quoteText;
 
-    //        "id":"150985458499",
-//            "url":"http:\/\/user.tumblr.com\/post\/150985458499",
-//            "url-with-slug":"http:\/\/user.tumblr.com\/post\/150985458499\/lfw-ss-2017-by-yu-fujiwara",
-//            "type":"photo",
-//            "date-gmt":"2016-09-27 00:33:47 GMT",
-//            "date":"Mon, 26 Sep 2016 20:33:47",
-//            "bookmarklet":0,
-//            "mobile":0,
-//            "feed-item":"",
-//            "from-feed-id":0,
-//            "unix-timestamp":1474936427,
-//            "format":"html",
-//            "reblog-key":"XeScM3cY",
-//            "slug":"lfw-ss-2017-by-yu-fujiwara",
-//            "is-submission":false,
-//            "like-button":"<div class=\"like_button\" data-post-id=\"150985458499\" data-blog-name=\"user\" id=\"like_button_150985458499\"><iframe id=\"like_iframe_150985458499\" src=\"http:\/\/assets.tumblr.com\/assets\/html\/like_iframe.html?_v=9c1e0782724156703eb4f7ba79dbe203#name=user&amp;post_id=150985458499&amp;color=black&amp;rk=XeScM3cY\" scrolling=\"no\" width=\"20\" height=\"20\" frameborder=\"0\" class=\"like_toggle\" allowTransparency=\"true\" name=\"like_iframe_150985458499\"><\/iframe><\/div>",
-//            "reblog-button":"<a href=\"https:\/\/www.tumblr.com\/reblog\/150985458499\/XeScM3cY\" class=\"reblog_button\"style=\"display: block;width:20px;height:20px;\"><svg width=\"100%\" height=\"100%\" viewBox=\"0 0 21 21\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" fill=\"#000\"><path d=\"M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z\"><\/path><path d=\"M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203\"><\/path><\/svg><\/a>",
-//            "photo-caption":"<p>lfw s\/s 2017 by yu fujiwara<\/p>",
-//            "width":467,
-//            "height":701,
-//            "photo-url-1280":"http:\/\/68.media.tumblr.com\/0bc620f4a63c3e4c57bcebd2545c7c89\/tumblr_oe508byHN51qznewfo1_500.jpg",
-//            "photo-url-500":"http:\/\/68.media.tumblr.com\/0bc620f4a63c3e4c57bcebd2545c7c89\/tumblr_oe508byHN51qznewfo1_500.jpg",
-//            "photo-url-400":"http:\/\/68.media.tumblr.com\/0bc620f4a63c3e4c57bcebd2545c7c89\/tumblr_oe508byHN51qznewfo1_400.jpg",
-//            "photo-url-250":"http:\/\/68.media.tumblr.com\/0bc620f4a63c3e4c57bcebd2545c7c89\/tumblr_oe508byHN51qznewfo1_250.jpg",
-//            "photo-url-100":"http:\/\/68.media.tumblr.com\/0bc620f4a63c3e4c57bcebd2545c7c89\/tumblr_oe508byHN51qznewfo1_100.jpg",
-//            "photo-url-75":"http:\/\/68.media.tumblr.com\/0bc620f4a63c3e4c57bcebd2545c7c89\/tumblr_oe508byHN51qznewfo1_75sq.jpg",
-//            "photos":[
-//
-//        ],
-//        "tags":[
-//        "fernanda ly",
-//                "louis vuitton",
-//                "s\/s 2017",
-//                "yu fujiwara",
-//                "LFW",
-//                "pink hair",
-//                "wire frames",
-//                "red lips"
-//        ]
-//    },
+    @SerializedName("quote-source")
+    String quoteSource;
+
+    @SerializedName("id3-artist")
+    String id3Artist;
+
+    @SerializedName("id3-album")
+    String id3Album;
+
+    @SerializedName("id3-title")
+    String id3Title;
+
+    @SerializedName("audio-caption")
+    String audioCaption;
+
+    @SerializedName("audio-player")
+    String audioPlayer;
+
+    @SerializedName("audio-embed")
+    String audioEmbed;
+
+    @SerializedName("audio-plays")
+    Integer audioPlays;
+
+    @SerializedName("video-caption")
+    String videoCaption;
+
+    @SerializedName("video-source")
+    String videoSource;
+
+    @SerializedName("video-player")
+    String videoPlayer;
+
+    @SerializedName("video-player-500")
+    String videoPlayer500;
+
+    public String getVideoPlayer250() {
+        return videoPlayer250;
+    }
+
+    public void setVideoPlayer250(String videoPlayer250) {
+        this.videoPlayer250 = videoPlayer250;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrlWithSlug() {
+        return urlWithSlug;
+    }
+
+    public void setUrlWithSlug(String urlWithSlug) {
+        this.urlWithSlug = urlWithSlug;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDateGMT() {
+        return dateGMT;
+    }
+
+    public void setDateGMT(String dateGMT) {
+        this.dateGMT = dateGMT;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Integer getBookmarklet() {
+        return bookmarklet;
+    }
+
+    public void setBookmarklet(Integer bookmarklet) {
+        this.bookmarklet = bookmarklet;
+    }
+
+    public Integer getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(Integer mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getFeedItem() {
+        return feedItem;
+    }
+
+    public void setFeedItem(String feedItem) {
+        this.feedItem = feedItem;
+    }
+
+    public String getFromFeedId() {
+        return fromFeedId;
+    }
+
+    public void setFromFeedId(String fromFeedId) {
+        this.fromFeedId = fromFeedId;
+    }
+
+    public String getUnixTimestamp() {
+        return unixTimestamp;
+    }
+
+    public void setUnixTimestamp(String unixTimestamp) {
+        this.unixTimestamp = unixTimestamp;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public String getReblogKey() {
+        return reblogKey;
+    }
+
+    public void setReblogKey(String reblogKey) {
+        this.reblogKey = reblogKey;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public boolean isSubmission() {
+        return isSubmission;
+    }
+
+    public void setSubmission(boolean submission) {
+        isSubmission = submission;
+    }
+
+    public String getLikeButton() {
+        return likeButton;
+    }
+
+    public void setLikeButton(String likeButton) {
+        this.likeButton = likeButton;
+    }
+
+    public String getReblogButton() {
+        return reblogButton;
+    }
+
+    public void setReblogButton(String reblogButton) {
+        this.reblogButton = reblogButton;
+    }
+
+    public String getPhotoCaption() {
+        return photoCaption;
+    }
+
+    public void setPhotoCaption(String photoCaption) {
+        this.photoCaption = photoCaption;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public String getPhotoUrlCaption1280() {
+        return photoUrlCaption1280;
+    }
+
+    public void setPhotoUrlCaption1280(String photoUrlCaption1280) {
+        this.photoUrlCaption1280 = photoUrlCaption1280;
+    }
+
+    public String getPhotoUrlCaption500() {
+        return photoUrlCaption500;
+    }
+
+    public void setPhotoUrlCaption500(String photoUrlCaption500) {
+        this.photoUrlCaption500 = photoUrlCaption500;
+    }
+
+    public String getPhotoUrlCaption400() {
+        return photoUrlCaption400;
+    }
+
+    public void setPhotoUrlCaption400(String photoUrlCaption400) {
+        this.photoUrlCaption400 = photoUrlCaption400;
+    }
+
+    public String getPhotoUrlCaption250() {
+        return photoUrlCaption250;
+    }
+
+    public void setPhotoUrlCaption250(String photoUrlCaption250) {
+        this.photoUrlCaption250 = photoUrlCaption250;
+    }
+
+    public String getPhotoUrlCaption100() {
+        return photoUrlCaption100;
+    }
+
+    public void setPhotoUrlCaption100(String photoUrlCaption100) {
+        this.photoUrlCaption100 = photoUrlCaption100;
+    }
+
+    public String getPhotoUrlCaption75() {
+        return photoUrlCaption75;
+    }
+
+    public void setPhotoUrlCaption75(String photoUrlCaption75) {
+        this.photoUrlCaption75 = photoUrlCaption75;
+    }
+
+    public Photo[] getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(Photo[] photos) {
+        this.photos = photos;
+    }
+
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
+    }
+
+    public String getQuoteText() {
+        return quoteText;
+    }
+
+    public void setQuoteText(String quoteText) {
+        this.quoteText = quoteText;
+    }
+
+    public String getQuoteSource() {
+        return quoteSource;
+    }
+
+    public void setQuoteSource(String quoteSource) {
+        this.quoteSource = quoteSource;
+    }
+
+    public String getId3Artist() {
+        return id3Artist;
+    }
+
+    public void setId3Artist(String id3Artist) {
+        this.id3Artist = id3Artist;
+    }
+
+    public String getId3Album() {
+        return id3Album;
+    }
+
+    public void setId3Album(String id3Album) {
+        this.id3Album = id3Album;
+    }
+
+    public String getId3Title() {
+        return id3Title;
+    }
+
+    public void setId3Title(String id3Title) {
+        this.id3Title = id3Title;
+    }
+
+    public String getAudioCaption() {
+        return audioCaption;
+    }
+
+    public void setAudioCaption(String audioCaption) {
+        this.audioCaption = audioCaption;
+    }
+
+    public String getAudioPlayer() {
+        return audioPlayer;
+    }
+
+    public void setAudioPlayer(String audioPlayer) {
+        this.audioPlayer = audioPlayer;
+    }
+
+    public String getAudioEmbed() {
+        return audioEmbed;
+    }
+
+    public void setAudioEmbed(String audioEmbed) {
+        this.audioEmbed = audioEmbed;
+    }
+
+    public Integer getAudioPlays() {
+        return audioPlays;
+    }
+
+    public void setAudioPlays(Integer audioPlays) {
+        this.audioPlays = audioPlays;
+    }
+
+    public String getVideoCaption() {
+        return videoCaption;
+    }
+
+    public void setVideoCaption(String videoCaption) {
+        this.videoCaption = videoCaption;
+    }
+
+    public String getVideoSource() {
+        return videoSource;
+    }
+
+    public void setVideoSource(String videoSource) {
+        this.videoSource = videoSource;
+    }
+
+    public String getVideoPlayer() {
+        return videoPlayer;
+    }
+
+    public void setVideoPlayer(String videoPlayer) {
+        this.videoPlayer = videoPlayer;
+    }
+
+    public String getVideoPlayer500() {
+        return videoPlayer500;
+    }
+
+    public void setVideoPlayer500(String videoPlayer500) {
+        this.videoPlayer500 = videoPlayer500;
+    }
+
+    @SerializedName("video-player-250")
+    String videoPlayer250;
 
 }

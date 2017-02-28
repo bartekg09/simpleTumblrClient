@@ -1,4 +1,4 @@
-package pl.bgortych.simpletumblrclient.searcher;
+package pl.bgortych.simpletumblrclient.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,48 +7,44 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import pl.bgortych.simpletumblrclient.R;
-
+import pl.bgortych.simpletumblrclient.fragments.fragmentAdapters.PostListAdapter;
+import pl.bgortych.simpletumblrclient.model.Post;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link UserSearchFragment.OnFragmentInteractionListener} interface
+ * {@link PostListFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link UserSearchFragment#newInstance} factory method to
+ * Use the {@link PostListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserSearchFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class PostListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public UserSearchFragment() {
-        // Required empty public constructor
+    ListView postListView;
+    View view;
+
+    public PostListFragment() {
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UserSearchFragment.
+     * @return A new instance of fragment PostListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static UserSearchFragment newInstance(String param1, String param2) {
-        UserSearchFragment fragment = new UserSearchFragment();
+    public static PostListFragment newInstance() {
+        PostListFragment fragment = new PostListFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,24 +52,14 @@ public class UserSearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_search, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        view = inflater.inflate(R.layout.fragment_post_list, container, false);
+        postListView = (ListView) view.findViewById(R.id.posts_list_view);
+        return view;
     }
 
     @Override
@@ -93,6 +79,10 @@ public class UserSearchFragment extends Fragment {
         mListener = null;
     }
 
+    public void bindData(ArrayList<Post> tumblrPostList) {
+        postListView.setAdapter(new PostListAdapter(tumblrPostList, getContext()));
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -105,6 +95,6 @@ public class UserSearchFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void postListOnFragmentInteraction(Uri uri);
     }
 }
