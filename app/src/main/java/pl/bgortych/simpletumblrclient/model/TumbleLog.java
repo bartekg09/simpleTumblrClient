@@ -53,10 +53,10 @@ public class TumbleLog {
         this.feeds = feeds;
     }
 
-    String title;
-    String description;
-    String name;
-    String timezone;
-    Boolean cname;
-    Feed[] feeds;
+    private String title;
+    private String description;
+    private String name;
+    private String timezone;
+    private Boolean cname;
+    private Feed[] feeds;
 }

@@ -87,20 +87,26 @@ public class Photo {
         this.photoUrl75 = photoUrl75;
     }
 
-    String offset;
-    String caption;
-    Integer width;
-    Integer height;
+    private String offset;
+    private String caption;
+    private Integer width;
+    private Integer height;
     @SerializedName("photo-url-1280")
+    private
     String photoUrl1280;
     @SerializedName("photo-url-500")
+    private
     String photoUrl500;
     @SerializedName("photo-url-400")
+    private
     String photoUrl400;
     @SerializedName("photo-url-250")
+    private
     String photoUrl250;
     @SerializedName("photo-url-100")
+    private
     String photoUrl100;
     @SerializedName("photo-url-75")
+    private
     String photoUrl75;
 }

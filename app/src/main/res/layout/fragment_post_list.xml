@@ -4,21 +4,22 @@
     android:layout_height="match_parent"
     tools:context="pl.bgortych.simpletumblrclient.fragments.PostListFragment">
 
-    <ListView
-        android:id="@+id/posts_list_view"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/posts_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/post_list_item"/>
+        tools:listitem="@layout/post_list_item" />
 
     <RelativeLayout
         android:id="@+id/progress_bar"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
         <ProgressBar
-            android:layout_centerInParent="true"
             android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_height="30dp"
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
 </FrameLayout>

@@ -32,7 +32,7 @@ public class TumblrHttpClientTask extends AsyncTask<String, Void, TumblrResponse
         void onError();
     }
 
-    private Listener mListener;
+    private final Listener mListener;
 
     @Override
     protected TumblrResponse doInBackground(String... params) {
@@ -50,8 +50,7 @@ public class TumblrHttpClientTask extends AsyncTask<String, Void, TumblrResponse
             Gson gson = new Gson();
             JsonReader reader = new JsonReader(new StringReader(response));
             reader.setLenient(true);
-            TumblrResponse tumblrResponse = gson.fromJson(reader, TumblrResponse.class);
-            return tumblrResponse;
+            return gson.fromJson(reader, TumblrResponse.class);
         } catch (Exception e) {
             Log.e("MainActivity", e.getMessage(), e);
         }

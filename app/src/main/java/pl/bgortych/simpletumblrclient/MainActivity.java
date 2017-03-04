@@ -1,32 +1,29 @@
 package pl.bgortych.simpletumblrclient;
 
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.ScrollView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import pl.bgortych.simpletumblrclient.fragments.PostListFragment;
 import pl.bgortych.simpletumblrclient.fragments.UserSearchFragment;
 import pl.bgortych.simpletumblrclient.httpConnection.TumblrHttpClientTask;
-import pl.bgortych.simpletumblrclient.model.Post;
-import pl.bgortych.simpletumblrclient.model.TumblrResponse;
 import pl.bgortych.simpletumblrclient.utils.httpClientUtils;
 
-public class MainActivity extends FragmentActivity implements TumblrHttpClientTask.Listener,
+public class MainActivity extends FragmentActivity implements
         UserSearchFragment.OnFragmentInteractionListener,
         PostListFragment.OnFragmentInteractionListener {
 
-    private ArrayList<Post> tumblrPostList;
-    UserSearchFragment userSearchFragment;
-    PostListFragment postListFragment;
-
-    boolean isInProgress = false;
+    private UserSearchFragment userSearchFragment = null;
+    private PostListFragment postListFragment = null;
+    private FragmentManager fragmentManager = null;
+    private FragmentTransaction fragmentTransaction = null;
+    private ScrollView mainView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +32,15 @@ public class MainActivity extends FragmentActivity implements TumblrHttpClientTa
 
         userSearchFragment = UserSearchFragment.newInstance();
         postListFragment = PostListFragment.newInstance();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.user_search_frame_layout, userSearchFragment);
         fragmentTransaction.add(R.id.post_list_frame_layout, postListFragment);
 
         fragmentTransaction.commit();
 
-        tumblrPostList = new ArrayList<>();
-    }
-
-    @Override
-    public void onLoaded(TumblrResponse response) {
-        this.tumblrPostList = new ArrayList<>(Arrays.asList(response.getPosts()));
-        postListFragment.bindData(tumblrPostList);
-        setInProgress(false);
-    }
-
-    @Override
-    public void onError() {
-        setInProgress(false);
-        Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.no_user_found), Toast.LENGTH_LONG);
-        toast.show();
+        mainView = (ScrollView)findViewById(R.id.activity_main);
+        mainView.setSmoothScrollingEnabled(true);
     }
 
     @Override
@@ -72,22 +54,15 @@ public class MainActivity extends FragmentActivity implements TumblrHttpClientTa
     }
 
     public void goOnclick(View view) {
-        setInProgress(true);
+        postListFragment.setInProgress(true);
         String userName = userSearchFragment.getUserNameEditText().getText().toString();
-        tumblrPostList = new ArrayList<>();
-        postListFragment.bindData(tumblrPostList);
         if (httpClientUtils.isConnected(this)) {
             String url = httpClientUtils.makeTumblrUrl(userName);
-            TumblrHttpClientTask task = new TumblrHttpClientTask(this);
+            TumblrHttpClientTask task = new TumblrHttpClientTask(postListFragment);
             task.execute(url);
         } else {
             Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.connection_failure), Toast.LENGTH_LONG);
             toast.show();
         }
-    }
-
-    private void setInProgress(boolean isInProgress) {
-        this.isInProgress = isInProgress;
-        postListFragment.showInProgressLaout(isInProgress);
     }
 }

@@ -1,7 +1,7 @@
 package pl.bgortych.simpletumblrclient.model;
 
-/**
- * Created by bgortych on 2017-02-26.
+/*
+  Created by bgortych on 2017-02-26.
  */
 import com.google.gson.annotations.SerializedName;
 public class TumblrResponse {
@@ -47,17 +47,22 @@ public class TumblrResponse {
     }
 
     @SerializedName("tumblelog")
+    private
     TumbleLog tumbleLog;
 
     @SerializedName("posts-start")
+    private
     Integer postsStart;
 
     @SerializedName("posts-total")
+    private
     Integer postTotal;
 
     @SerializedName("posts-type")
+    private
     String postType;
 
     @SerializedName("posts")
-    Post posts[];
+    private
+    Post[] posts;
 }

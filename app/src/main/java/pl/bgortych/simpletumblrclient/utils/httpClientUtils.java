@@ -15,7 +15,7 @@ public class httpClientUtils {
      * @param userName
      * @return Tumblr url
      */
-    public static final String makeTumblrUrl(String userName) {
+    public static String makeTumblrUrl(String userName) {
         final String protocolUrl = "http://";
         final String baseUrl = ".tumblr.com/api/read/json";
         if (userName != null && !userName.isEmpty()) {
@@ -33,9 +33,6 @@ public class httpClientUtils {
     public static boolean isConnected(Activity activity){
         ConnectivityManager connMgr = (ConnectivityManager) activity.getSystemService(Activity.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 }

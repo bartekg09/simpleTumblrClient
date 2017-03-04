@@ -8,114 +8,143 @@ import com.google.gson.annotations.SerializedName;
 
 public class Post {
 
-    String id;
-    String url;
+    private String id;
+    private String url;
 
     @SerializedName("url-with-slug")
+    private
     String urlWithSlug;
 
-    String type;
+    private String type;
 
     @SerializedName("date-gmt")
+    private
     String dateGMT;
 
-    String date;
+    private String date;
 
-    Integer bookmarklet;
+    private Integer bookmarklet;
 
-    Integer mobile;
+    private Integer mobile;
 
     @SerializedName("feed-item")
+    private
     String feedItem;
 
     @SerializedName("from-feed-id")
+    private
     String fromFeedId;
 
     @SerializedName("unix-timestamp")
+    private
     String unixTimestamp;
 
-    String format;
+    private String format;
 
     @SerializedName("reblog-key")
+    private
     String reblogKey;
 
-    String slug;
+    private String slug;
 
     @SerializedName("is-submission")
+    private
     boolean isSubmission;
 
     @SerializedName("like-button")
+    private
     String likeButton;
 
     @SerializedName("reblog-button")
+    private
     String reblogButton;
 
     @SerializedName("photo-caption")
+    private
     String photoCaption;
 
-    Integer width;
+    private Integer width;
 
-    Integer height;
+    private Integer height;
 
     @SerializedName("photo-url-1280")
+    private
     String photoUrlCaption1280;
 
     @SerializedName("photo-url-500")
+    private
     String photoUrlCaption500;
 
     @SerializedName("photo-url-400")
+    private
     String photoUrlCaption400;
 
     @SerializedName("photo-url-250")
+    private
     String photoUrlCaption250;
 
     @SerializedName("photo-url-100")
+    private
     String photoUrlCaption100;
 
     @SerializedName("photo-url-75")
+    private
     String photoUrlCaption75;
 
-    Photo[] photos;
+    private Photo[] photos;
 
-    String[] tags;
+    private String[] tags;
 
     @SerializedName("quote-text")
+    private
     String quoteText;
 
     @SerializedName("quote-source")
+    private
     String quoteSource;
 
     @SerializedName("id3-artist")
+    private
     String id3Artist;
 
     @SerializedName("id3-album")
+    private
     String id3Album;
 
     @SerializedName("id3-title")
+    private
     String id3Title;
 
     @SerializedName("audio-caption")
+    private
     String audioCaption;
 
     @SerializedName("audio-player")
+    private
     String audioPlayer;
 
     @SerializedName("audio-embed")
+    private
     String audioEmbed;
 
     @SerializedName("audio-plays")
+    private
     Integer audioPlays;
 
     @SerializedName("video-caption")
+    private
     String videoCaption;
 
     @SerializedName("video-source")
+    private
     String videoSource;
 
     @SerializedName("video-player")
+    private
     String videoPlayer;
 
     @SerializedName("video-player-500")
+    private
     String videoPlayer500;
 
     public String getVideoPlayer250() {
@@ -455,6 +484,7 @@ public class Post {
     }
 
     @SerializedName("video-player-250")
+    private
     String videoPlayer250;
 
 }

@@ -7,13 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="@string/enter_user_text"
-        android:layout_marginRight="100dp"
-        />
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp" />
     <Button
         android:layout_width="60dp"
         android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:text="GO"
+        android:layout_gravity="end"
+        android:text="@string/go_button_text"
         android:onClick="goOnclick"
         />
 </FrameLayout>
